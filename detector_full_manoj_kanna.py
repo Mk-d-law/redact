@@ -41,4 +41,10 @@ def classify_records(input_file, output_file):
     pd.DataFrame(results).to_csv(output_file, index=False)
     print(f"Output saved to {output_file}")
 if __name__ == "__main__":
-    classify_records("iscp_pii_dataset.csv", "iscp_pii_output.csv")
+    if len(sys.argv) < 2:
+        print("Usage: python3 detector_full_manoj_kanna.py iscp_pii_dataset.csv")
+        sys.exit(1)
+
+    input_csv = sys.argv[1]
+    output_csv = "redacted_output_manoj_kanna.csv"
+    classify_records(input_csv, output_csv)
